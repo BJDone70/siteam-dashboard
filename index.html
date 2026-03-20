@@ -279,6 +279,10 @@ tr.hide { display:none; }
         <div class="hdr-title">Daily Project Review</div>
         <div class="hdr-meta" id="hdr-meta">Loading report...</div>
       </div>
+      <div class="hdr-ctrl" id="hdr-ctrl">
+        <div class="dp-label">Report Date</div>
+        <div id="date-display" style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#FFC30A;padding:6px 0">—</div>
+      </div>
   </div>
   </header>
 
@@ -427,6 +431,11 @@ function render(data) {
   var reportDateFmt = data.reportDateFmt || data.reportDate || '';
   var hdrMeta = document.getElementById('hdr-meta');
   if (hdrMeta) hdrMeta.innerHTML = 'Review: <strong>' + reviewDateFmt + '</strong> &nbsp;|&nbsp; Report: <strong>' + reportDateFmt + '</strong> &nbsp;|&nbsp; ' + data.total + ' Projects';
+  var dateDisplay = document.getElementById('date-display');
+  if (dateDisplay) {
+    var d = new Date((data.reportDate || '') + 'T12:00:00');
+    dateDisplay.textContent = d.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric', year:'numeric'});
+  }
   var statsEl = document.getElementById('stats');
   var incomplete = (data.total || 0) - (data.completed || 0);
   if (statsEl) statsEl.innerHTML = '<div class="st st-red"><div class="st-val">' + incomplete + '</div><div class="st-lbl">Incomplete</div></div><div class="st st-green"><div class="st-val">' + (data.completed||0) + '</div><div class="st-lbl">Complete</div></div><div class="st st-red"><div class="st-val">' + (data.behindSchedule||0) + '</div><div class="st-lbl">Behind Sched</div></div><div class="st st-amber"><div class="st-val">' + (data.noSchedule||0) + '</div><div class="st-lbl">No Schedule</div></div>';
