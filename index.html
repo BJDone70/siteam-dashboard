@@ -321,7 +321,25 @@ tr.hide { display:none; }
     </table>
   </div>
 
-  <!-- EMPTY STATE -->
+    <!-- STALE PHOTOS TABLE -->
+  <div class="sec" id="sec-stale">
+    <div class="sec-hd">
+      <h2>No Recent Photos</h2>
+      <span class="bdg bdg-r" id="stale-bdg"></span>
+    </div>
+    <p class="sec-note">Projects with no photos uploaded in 30+ days.</p>
+    <table>
+      <thead><tr>
+        <th style="width:36px">#</th>
+        <th>Project</th>
+        <th class="tc">Days Since Last Photo</th>
+        <th class="tc">Log Status</th>
+      </tr></thead>
+      <tbody id="tb-stale"></tbody>
+    </table>
+  </div>
+
+    <!-- EMPTY STATE -->
   <div class="empty" id="empty-state">
     <div class="empty-icon">📊</div>
     <div class="empty-title">No Report Data</div>
@@ -435,6 +453,28 @@ function render(data) {
       var nd = rows.filter(function(r) { return r.logStatus !== 'completed'; }).length;
       lb.textContent = nd ? nd + ' incomplete' : 'All complete';
       lb.style.display = '';
+    }
+  }
+
+  // ── Stale photos table ──
+  var staleRows = rows.filter(function(r) { return r.photoAgeDays !== null && r.photoAgeDays !== undefined && r.photoAgeDays >= 30; }).sort(function(a,b) { return b.photoAgeDays - a.photoAgeDays; });
+  var tbStale = document.getElementById('tb-stale');
+  var secStale = document.getElementById('sec-stale');
+  if (tbStale) {
+    if (staleRows.length) {
+      tbStale.innerHTML = staleRows.map(function(r, i) {
+        return '<tr>' +
+          '<td class="n-idx">' + (i+1) + '</td>' +
+          '<td><div class="pn">' + r.name + '</div>' + (r.address ? '<div class="pl">' + r.address + '</div>' : '') + '</td>' +
+          '<td class="tc"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#dc2626">' + r.photoAgeDays + 'd</span></td>' +
+          '<td class="tc">' + pillHtml(r.logStatus) + '</td>' +
+          '</tr>';
+      }).join('');
+      if (secStale) secStale.classList.add('vis');
+      var staleBdg = document.getElementById('stale-bdg');
+      if (staleBdg) staleBdg.textContent = staleRows.length + ' projects';
+    } else if (secStale) {
+      secStale.classList.remove('vis');
     }
   }
 
