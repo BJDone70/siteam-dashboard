@@ -314,66 +314,10 @@ tr.hide { display:none; }
       <thead><tr>
         <th style="width:36px">#</th>
         <th>Project</th>
-        <th>Log Report</th>
-        <th class="tc">Status</th>
-        <th class="tc">Started</th>
-        <th class="tc">Completed</th>
+        <th class="tc">Log Status</th>
+        <th class="tc">Photo Freshness</th>
       </tr></thead>
       <tbody id="tb-logs"></tbody>
-    </table>
-  </div>
-
-  <!-- PHOTO DOCUMENTATION TABLE -->
-  <div class="sec" id="sec-photos">
-    <div class="sec-hd">
-      <h2 id="photos-title">Photo Documentation</h2>
-      <span class="bdg bdg-r" id="photos-bdg"></span>
-    </div>
-    <table>
-      <thead><tr>
-        <th style="width:36px">#</th>
-        <th>Project</th>
-        <th class="tc">Photos Today</th>
-        <th>Latest Upload</th>
-        <th class="tc">Freshness</th>
-      </tr></thead>
-      <tbody id="tb-photos"></tbody>
-    </table>
-  </div>
-
-  <!-- SCHEDULE FLAGS TABLE -->
-  <div class="sec" id="sec-sched">
-    <div class="sec-hd">
-      <h2>Schedule Flags</h2>
-      <span class="bdg bdg-r" id="sched-bdg"></span>
-    </div>
-    <p class="sec-note">Overdue = items past scheduled end date. Validate against field progress.</p>
-    <table>
-      <thead><tr>
-        <th style="width:36px">#</th>
-        <th>Project</th>
-        <th>Phases</th>
-        <th class="tc">Items</th>
-        <th class="tc">Overdue</th>
-        <th>Severity</th>
-      </tr></thead>
-      <tbody id="tb-sched"></tbody>
-    </table>
-  </div>
-
-  <!-- NO SCHEDULE TABLE -->
-  <div class="sec" id="sec-nosched">
-    <div class="sec-hd">
-      <h2>No Schedule Configured</h2>
-      <span class="bdg bdg-o" id="nosched-bdg"></span>
-    </div>
-    <table>
-      <thead><tr>
-        <th>Project</th>
-        <th>Location</th>
-        <th>Status</th>
-      </tr></thead>
-      <tbody id="tb-nosched"></tbody>
     </table>
   </div>
 
@@ -402,7 +346,7 @@ document.getElementById('logo').src = 'data:image/png;base64,iVBORw0KGgoAAAANSUh
 // ── Mock Data ──
 // This object mirrors exactly what content.js produces from the Siteam API.
 // The Chrome extension (Phase 1) will generate and embed this block.
-var REPORT_DATA = { "2026-03-20": {"reportDate":"2026-03-20","reviewDate":"2026-03-19","reviewDateFmt":"Mar 19, 2026","reportDateFmt":"Mar 20, 2026","reviewDateLong":"Thursday, March 19, 2026","total":15,"completed":0,"started":3,"photosUpdated":4,"behindSchedule":12,"noSchedule":3,"findings":["Zero daily logs completed for Mar 19, 2026 across all 15 projects.","7 projects have no photos in 30+ days.","3 projects have no schedule configured."],"projects":[{"id":2650,"name":"240 Hempstead Ave","loc":"West Hempstead, NY","logStatus":"Not Started","logName":"Daily Log","aS":10,"aC":1,"ph":0,"lp":"2025-07-21","ps":242,"pf":{"l":"8+ months","c":"pr"},"si":26,"so":26,"sp":["Phase 2B","Phase 2A","Framing of ceiling in cafeteria."]},{"id":3257,"name":"980 Railroad Ave","loc":"Woodmere, NY","logStatus":"Started","logName":"Railroad Ave Daily Report","aS":20,"aC":5,"ph":7,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":38,"so":38,"sp":["Phase II - Renovation ","Phase I - Ground Up"]},{"id":3076,"name":"Bedford Court - Sunrise","loc":"Silver Spring, MD","logStatus":"Not Started","logName":"Bedford - Daily Report","aS":1,"aC":21,"ph":0,"lp":"2026-01-28","ps":51,"pf":{"l":"2 months","c":"pr"},"si":60,"so":60,"sp":["Phase 1"]},{"id":3123,"name":"Brennity at Tradition","loc":"Port St. Lucie, FL","logStatus":"Not Started","logName":"Brennity at Tradition - Daily Report","aS":3,"aC":3,"ph":0,"lp":"2026-01-27","ps":52,"pf":{"l":"2 months","c":"pr"},"si":52,"so":52,"sp":["Phase 4","Renovation - Phase 3"]},{"id":2597,"name":"Carriage House","loc":"Philadelphia, PA","logStatus":"Not Started","logName":"One 70","aS":7,"aC":0,"ph":0,"lp":"2026-03-16","ps":4,"pf":{"l":"4 days","c":"po"},"si":57,"so":57,"sp":["Renovation - Phase 6","Renovation - Phase 5","Renovation - Phase 4","Renovation - Phase 3"]},{"id":3703,"name":"Congregation Beth Mikroh","loc":"Monsey, NY","logStatus":"No Log","logName":"","aS":0,"aC":0,"ph":0,"lp":"none","ps":999,"pf":{"l":"None ever","c":"pr"},"si":0,"so":0,"sp":[]},{"id":3259,"name":"Encore Village","loc":"Schaumburg, IL","logStatus":"Started","logName":"Encore Village Daily Report","aS":3,"aC":29,"ph":9,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":0,"so":0,"sp":[]},{"id":3701,"name":"Hagler House","loc":"Englewood, NJ","logStatus":"Started","logName":"Daily Log","aS":11,"aC":5,"ph":18,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":0,"so":0,"sp":[]},{"id":3121,"name":"Heron Point","loc":"Vero Beach, FL","logStatus":"Not Started","logName":"Heron Point - Daily Report","aS":4,"aC":0,"ph":0,"lp":"2026-03-04","ps":16,"pf":{"l":"2 weeks","c":"pr"},"si":81,"so":81,"sp":["Phase 4B","Phase 4","Renovation - Phase 3"]},{"id":3184,"name":"Mira Vie at Tinton Falls","loc":"Tinton Falls, NJ","logStatus":"Not Started","logName":"The Brennity at Fairhope Daily Report","aS":0,"aC":0,"ph":0,"lp":"2025-12-30","ps":80,"pf":{"l":"3 months","c":"pr"},"si":64,"so":64,"sp":["Phase 3"]},{"id":3146,"name":"Mira Vie at Warren","loc":"Warren, NJ","logStatus":"Not Started","logName":"Mira Vie at Warren -  Daily Report","aS":1,"aC":7,"ph":0,"lp":"2026-03-11","ps":9,"pf":{"l":"2 weeks","c":"po"},"si":183,"so":183,"sp":["Phase 5","Phase 4","Renovation - Phase 3"]},{"id":3087,"name":"Mira Vie Montville","loc":"Montville, NJ","logStatus":"Not Started","logName":"Mira Vie Montville Daily Report","aS":1,"aC":0,"ph":0,"lp":"2026-03-13","ps":7,"pf":{"l":"7 days","c":"po"},"si":242,"so":242,"sp":["Phase 10","Phase 9","Phase 8","Phase 7"]},{"id":3099,"name":"Montgomery Village","loc":"Montgomery Village, MD","logStatus":"Not Started","logName":"Montgomery Village - Daily Report","aS":3,"aC":23,"ph":0,"lp":"2026-02-11","ps":37,"pf":{"l":"1 months","c":"pr"},"si":118,"so":118,"sp":["Phase 3","Phase 2"]},{"id":2797,"name":"The Brennity at Daphne","loc":"Daphne, AL","logStatus":"Not Started","logName":"The Brennity at Daphn Daily Report","aS":0,"aC":0,"ph":0,"lp":"2025-12-04","ps":106,"pf":{"l":"4+ months","c":"pr"},"si":86,"so":86,"sp":["Renovation - Phase 3","Renovation - Phase 2","Renovation - Phase 1"]},{"id":3699,"name":"The Brennity at Melbourne Senior Living","loc":"Melbourne, FL","logStatus":"Not Started","logName":"The Brennity at Melbourne Senior Living","aS":0,"aC":0,"ph":20,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":27,"so":27,"sp":["Phase 1"]}],"rows":[{"id":2650,"name":"240 Hempstead Ave","address":"West Hempstead, NY","logStatus":"not-started","overdueItems":26,"totalItems":26,"phases":["Phase 2B","Phase 2A","Framing of ceiling in cafeteria."],"hasSchedule":true},{"id":3257,"name":"980 Railroad Ave","address":"Woodmere, NY","logStatus":"draft","overdueItems":38,"totalItems":38,"phases":["Phase II - Renovation ","Phase I - Ground Up"],"hasSchedule":true},{"id":3076,"name":"Bedford Court - Sunrise","address":"Silver Spring, MD","logStatus":"not-started","overdueItems":60,"totalItems":60,"phases":["Phase 1"],"hasSchedule":true},{"id":3123,"name":"Brennity at Tradition","address":"Port St. Lucie, FL","logStatus":"not-started","overdueItems":52,"totalItems":52,"phases":["Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":2597,"name":"Carriage House","address":"Philadelphia, PA","logStatus":"not-started","overdueItems":57,"totalItems":57,"phases":["Renovation - Phase 6","Renovation - Phase 5","Renovation - Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":3703,"name":"Congregation Beth Mikroh","address":"Monsey, NY","logStatus":"no-log","overdueItems":0,"totalItems":0,"phases":[],"hasSchedule":false},{"id":3259,"name":"Encore Village","address":"Schaumburg, IL","logStatus":"draft","overdueItems":0,"totalItems":0,"phases":[],"hasSchedule":false},{"id":3701,"name":"Hagler House","address":"Englewood, NJ","logStatus":"draft","overdueItems":0,"totalItems":0,"phases":[],"hasSchedule":false},{"id":3121,"name":"Heron Point","address":"Vero Beach, FL","logStatus":"not-started","overdueItems":81,"totalItems":81,"phases":["Phase 4B","Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":3184,"name":"Mira Vie at Tinton Falls","address":"Tinton Falls, NJ","logStatus":"not-started","overdueItems":64,"totalItems":64,"phases":["Phase 3"],"hasSchedule":true},{"id":3146,"name":"Mira Vie at Warren","address":"Warren, NJ","logStatus":"not-started","overdueItems":183,"totalItems":183,"phases":["Phase 5","Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":3087,"name":"Mira Vie Montville","address":"Montville, NJ","logStatus":"not-started","overdueItems":242,"totalItems":242,"phases":["Phase 10","Phase 9","Phase 8","Phase 7"],"hasSchedule":true},{"id":3099,"name":"Montgomery Village","address":"Montgomery Village, MD","logStatus":"not-started","overdueItems":118,"totalItems":118,"phases":["Phase 3","Phase 2"],"hasSchedule":true},{"id":2797,"name":"The Brennity at Daphne","address":"Daphne, AL","logStatus":"not-started","overdueItems":86,"totalItems":86,"phases":["Renovation - Phase 3","Renovation - Phase 2","Renovation - Phase 1"],"hasSchedule":true},{"id":3699,"name":"The Brennity at Melbourne Senior Living","address":"Melbourne, FL","logStatus":"not-started","overdueItems":27,"totalItems":27,"phases":["Phase 1"],"hasSchedule":true}]} };
+var REPORT_DATA = { "2026-03-20": {"reportDate":"2026-03-20","reviewDate":"2026-03-19","reviewDateFmt":"Mar 19, 2026","reportDateFmt":"Mar 20, 2026","reviewDateLong":"Thursday, March 19, 2026","total":15,"completed":0,"started":3,"photosUpdated":4,"behindSchedule":0,"noSchedule":3,"findings":["Zero daily logs completed for Mar 19, 2026 across all 15 projects.","7 projects have no photos in 30+ days."],"projects":[{"id":2650,"name":"240 Hempstead Ave","loc":"West Hempstead, NY","logStatus":"Not Started","logName":"Daily Log","aS":10,"aC":1,"ph":0,"lp":"2025-07-21","ps":242,"pf":{"l":"8+ months","c":"pr"},"si":3,"so":0,"sp":["Phase 2B","Phase 2A","Framing of ceiling in cafeteria."]},{"id":3257,"name":"980 Railroad Ave","loc":"Woodmere, NY","logStatus":"Started","logName":"Railroad Ave Daily Report","aS":21,"aC":5,"ph":7,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":2,"so":0,"sp":["Phase II - Renovation ","Phase I - Ground Up"]},{"id":3076,"name":"Bedford Court - Sunrise","loc":"Silver Spring, MD","logStatus":"Not Started","logName":"Bedford - Daily Report","aS":1,"aC":21,"ph":0,"lp":"2026-01-28","ps":51,"pf":{"l":"2 months","c":"pr"},"si":1,"so":0,"sp":["Phase 1"]},{"id":3123,"name":"Brennity at Tradition","loc":"Port St. Lucie, FL","logStatus":"Not Started","logName":"Brennity at Tradition - Daily Report","aS":3,"aC":3,"ph":0,"lp":"2026-01-27","ps":52,"pf":{"l":"2 months","c":"pr"},"si":2,"so":0,"sp":["Phase 4","Renovation - Phase 3"]},{"id":2597,"name":"Carriage House","loc":"Philadelphia, PA","logStatus":"Not Started","logName":"One 70","aS":7,"aC":0,"ph":0,"lp":"2026-03-16","ps":4,"pf":{"l":"4 days","c":"po"},"si":6,"so":0,"sp":["Renovation - Phase 6","Renovation - Phase 5","Renovation - Phase 4","Renovation - Phase 3"]},{"id":3703,"name":"Congregation Beth Mikroh","loc":"Monsey, NY","logStatus":"Not Started","logName":"Daily Logs","aS":1,"aC":0,"ph":0,"lp":"none","ps":999,"pf":{"l":"None ever","c":"pr"},"si":0,"so":0,"sp":[]},{"id":3259,"name":"Encore Village","loc":"Schaumburg, IL","logStatus":"Started","logName":"Encore Village Daily Report","aS":3,"aC":29,"ph":9,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":0,"so":0,"sp":[]},{"id":3701,"name":"Hagler House","loc":"Englewood, NJ","logStatus":"Started","logName":"Daily Log","aS":11,"aC":5,"ph":18,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":0,"so":0,"sp":[]},{"id":3121,"name":"Heron Point","loc":"Vero Beach, FL","logStatus":"Not Started","logName":"Heron Point - Daily Report","aS":4,"aC":0,"ph":0,"lp":"2026-03-04","ps":16,"pf":{"l":"2 weeks","c":"pr"},"si":3,"so":0,"sp":["Phase 4B","Phase 4","Renovation - Phase 3"]},{"id":3184,"name":"Mira Vie at Tinton Falls","loc":"Tinton Falls, NJ","logStatus":"Not Started","logName":"The Brennity at Fairhope Daily Report","aS":0,"aC":0,"ph":0,"lp":"2025-12-30","ps":80,"pf":{"l":"3 months","c":"pr"},"si":1,"so":0,"sp":["Phase 3"]},{"id":3146,"name":"Mira Vie at Warren","loc":"Warren, NJ","logStatus":"Not Started","logName":"Mira Vie at Warren -  Daily Report","aS":1,"aC":7,"ph":0,"lp":"2026-03-11","ps":9,"pf":{"l":"2 weeks","c":"po"},"si":3,"so":0,"sp":["Phase 5","Phase 4","Renovation - Phase 3"]},{"id":3087,"name":"Mira Vie Montville","loc":"Montville, NJ","logStatus":"Not Started","logName":"Mira Vie Montville Daily Report","aS":1,"aC":0,"ph":0,"lp":"2026-03-13","ps":7,"pf":{"l":"7 days","c":"po"},"si":4,"so":0,"sp":["Phase 10","Phase 9","Phase 8","Phase 7"]},{"id":3099,"name":"Montgomery Village","loc":"Montgomery Village, MD","logStatus":"Not Started","logName":"Montgomery Village - Daily Report","aS":3,"aC":23,"ph":0,"lp":"2026-02-11","ps":37,"pf":{"l":"1 months","c":"pr"},"si":2,"so":0,"sp":["Phase 3","Phase 2"]},{"id":2797,"name":"The Brennity at Daphne","loc":"Daphne, AL","logStatus":"Not Started","logName":"The Brennity at Daphn Daily Report","aS":0,"aC":0,"ph":0,"lp":"2025-12-04","ps":106,"pf":{"l":"4+ months","c":"pr"},"si":3,"so":0,"sp":["Renovation - Phase 3","Renovation - Phase 2","Renovation - Phase 1"]},{"id":3699,"name":"The Brennity at Melbourne Senior Living","loc":"Melbourne, FL","logStatus":"Not Started","logName":"The Brennity at Melbourne Senior Living","aS":0,"aC":0,"ph":20,"lp":"2026-03-19","ps":1,"pf":{"l":"Current","c":"pg"},"si":1,"so":0,"sp":["Phase 1"]}],"rows":[{"id":2650,"name":"240 Hempstead Ave","address":"West Hempstead, NY","logStatus":"not-started","photoAgeDays":242,"phases":["Phase 2B","Phase 2A","Framing of ceiling in cafeteria."],"hasSchedule":true},{"id":3257,"name":"980 Railroad Ave","address":"Woodmere, NY","logStatus":"draft","photoAgeDays":1,"phases":["Phase II - Renovation ","Phase I - Ground Up"],"hasSchedule":true},{"id":3076,"name":"Bedford Court - Sunrise","address":"Silver Spring, MD","logStatus":"not-started","photoAgeDays":51,"phases":["Phase 1"],"hasSchedule":true},{"id":3123,"name":"Brennity at Tradition","address":"Port St. Lucie, FL","logStatus":"not-started","photoAgeDays":52,"phases":["Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":2597,"name":"Carriage House","address":"Philadelphia, PA","logStatus":"not-started","photoAgeDays":4,"phases":["Renovation - Phase 6","Renovation - Phase 5","Renovation - Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":3703,"name":"Congregation Beth Mikroh","address":"Monsey, NY","logStatus":"not-started","photoAgeDays":999,"phases":[],"hasSchedule":false},{"id":3259,"name":"Encore Village","address":"Schaumburg, IL","logStatus":"draft","photoAgeDays":1,"phases":[],"hasSchedule":false},{"id":3701,"name":"Hagler House","address":"Englewood, NJ","logStatus":"draft","photoAgeDays":1,"phases":[],"hasSchedule":false},{"id":3121,"name":"Heron Point","address":"Vero Beach, FL","logStatus":"not-started","photoAgeDays":16,"phases":["Phase 4B","Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":3184,"name":"Mira Vie at Tinton Falls","address":"Tinton Falls, NJ","logStatus":"not-started","photoAgeDays":80,"phases":["Phase 3"],"hasSchedule":true},{"id":3146,"name":"Mira Vie at Warren","address":"Warren, NJ","logStatus":"not-started","photoAgeDays":9,"phases":["Phase 5","Phase 4","Renovation - Phase 3"],"hasSchedule":true},{"id":3087,"name":"Mira Vie Montville","address":"Montville, NJ","logStatus":"not-started","photoAgeDays":7,"phases":["Phase 10","Phase 9","Phase 8","Phase 7"],"hasSchedule":true},{"id":3099,"name":"Montgomery Village","address":"Montgomery Village, MD","logStatus":"not-started","photoAgeDays":37,"phases":["Phase 3","Phase 2"],"hasSchedule":true},{"id":2797,"name":"The Brennity at Daphne","address":"Daphne, AL","logStatus":"not-started","photoAgeDays":106,"phases":["Renovation - Phase 3","Renovation - Phase 2","Renovation - Phase 1"],"hasSchedule":true},{"id":3699,"name":"The Brennity at Melbourne Senior Living","address":"Melbourne, FL","logStatus":"not-started","photoAgeDays":1,"phases":["Phase 1"],"hasSchedule":true}]} };
 
 // ════════════════════════════════════════════════════════
 // DASHBOARD LOGIC
@@ -412,75 +356,125 @@ var currentData = null;
 var currentFilter = 'all';
 
 function pillHtml(s) {
-  var m = {completed:['pill-g','Completed'],draft:['pill-o','Draft'],'in-progress':['pill-b','In Progress'],'not-started':['pill-r','Not Started'],'no-log':['pill-y','No Log']};
+  var m = {
+    completed: ['pill-g', 'Completed'],
+    draft:     ['pill-o', 'Draft'],
+    'in-progress': ['pill-b', 'In Progress'],
+    'not-started': ['pill-r', 'Not Started'],
+    'no-log':  ['pill-y', 'No Log']
+  };
   var p = m[s] || ['pill-y', s];
   return '<span class="pill ' + p[0] + '">' + p[1] + '</span>';
 }
 
-function sevHtml(ov, ti) {
-  if (!ti) return '<span class="pill pill-y">No Schedule</span>';
-  if (!ov) return '<span class="pill pill-g">On Track</span>';
-  var pct = ov / ti;
-  var cls = pct >= 0.5 ? 'sev-c' : pct >= 0.25 ? 'sev-h' : 'sev-m';
-  return '<span class="sev ' + cls + '"><span class="sev-bar"><span class="sev-fill"></span></span>' + ov + ' overdue</span>';
+function freshnessHtml(days) {
+  if (days === null || days === undefined || days < 0) return '<span class="pill pill-y">No Photos</span>';
+  if (days === 0) return '<span class="pill pill-g">Today</span>';
+  if (days <= 7) return '<span class="pill pill-g">' + days + 'd ago</span>';
+  if (days <= 30) return '<span class="pill pill-o">' + days + 'd ago</span>';
+  return '<span class="pill pill-r">' + days + 'd ago</span>';
 }
 
 function render(data) {
   var rows = data.rows || [];
-  var reviewDateFmt = data.reviewDateFmt || data.reviewDate || '';
-  var reportDateFmt = data.reportDateFmt || data.reportDate || '';
+
+  // ── Header meta + date display ──
   var hdrMeta = document.getElementById('hdr-meta');
-  if (hdrMeta) hdrMeta.innerHTML = 'Review: <strong>' + reviewDateFmt + '</strong> &nbsp;|&nbsp; Report: <strong>' + reportDateFmt + '</strong> &nbsp;|&nbsp; ' + data.total + ' Projects';
+  if (hdrMeta) hdrMeta.innerHTML = 'Review: <strong>' + (data.reviewDateFmt || '') + '</strong> &nbsp;|&nbsp; Report: <strong>' + (data.reportDateFmt || '') + '</strong> &nbsp;|&nbsp; ' + data.total + ' Projects';
   var dateDisplay = document.getElementById('date-display');
   if (dateDisplay) {
-    var d = new Date((data.reportDate || '') + 'T12:00:00');
-    dateDisplay.textContent = d.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric', year:'numeric'});
+    var d0 = new Date((data.reportDate || '') + 'T12:00:00');
+    dateDisplay.textContent = d0.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric', year:'numeric'});
   }
-  var statsEl = document.getElementById('stats');
+
+  // ── Stat cards: Incomplete | Complete | Draft | No Log ──
   var incomplete = (data.total || 0) - (data.completed || 0);
-  if (statsEl) statsEl.innerHTML = '<div class="st st-red"><div class="st-val">' + incomplete + '</div><div class="st-lbl">Incomplete</div></div><div class="st st-green"><div class="st-val">' + (data.completed||0) + '</div><div class="st-lbl">Complete</div></div><div class="st st-red"><div class="st-val">' + (data.behindSchedule||0) + '</div><div class="st-lbl">Behind Sched</div></div><div class="st st-amber"><div class="st-val">' + (data.noSchedule||0) + '</div><div class="st-lbl">No Schedule</div></div>';
+  var draftCount = rows.filter(function(r) { return r.logStatus === 'draft'; }).length;
+  var noLogCount = rows.filter(function(r) { return r.logStatus === 'no-log'; }).length;
+  var statsEl = document.getElementById('stats');
+  if (statsEl) statsEl.innerHTML =
+    '<div class="st st-red"><div class="st-val">' + incomplete + '</div><div class="st-lbl">Incomplete</div></div>' +
+    '<div class="st st-green"><div class="st-val">' + (data.completed || 0) + '</div><div class="st-lbl">Complete</div></div>' +
+    '<div class="st st-amber"><div class="st-val">' + draftCount + '</div><div class="st-lbl">Draft</div></div>' +
+    '<div class="st st-blue"><div class="st-val">' + noLogCount + '</div><div class="st-lbl">No Log</div></div>';
+
+  // ── Alert / findings ──
   var alertEl = document.getElementById('alert');
-  if (alertEl) { if (data.findings && data.findings.length) { alertEl.innerHTML = '<div class="alert-hd">\u26a0 Action Required</div>' + data.findings.map(function(f){return '<div class="alert-row">' + f + '</div>';}).join(''); alertEl.classList.add('vis'); } else alertEl.classList.remove('vis'); }
-  var withSched = rows.filter(function(r){return r.hasSchedule && r.overdueItems > 0;});
-  var noSched = rows.filter(function(r){return !r.hasSchedule;});
+  if (alertEl) {
+    if (data.findings && data.findings.length) {
+      alertEl.innerHTML = '<div class="alert-hd">&#9888; Action Required</div>' +
+        data.findings.map(function(f) { return '<div class="alert-row">' + f + '</div>'; }).join('');
+      alertEl.classList.add('vis');
+    } else {
+      alertEl.classList.remove('vis');
+    }
+  }
+
+  // ── Daily Logs table ──
   var tbLogs = document.getElementById('tb-logs');
-  if (tbLogs) tbLogs.innerHTML = rows.map(function(r,i){return '<tr><td class="n-idx">' + (i+1) + '</td><td><div class="pn">' + r.name + '</div>' + (r.address ? '<div class="pl">' + r.address + '</div>' : '') + '</td><td class="tc">' + pillHtml(r.logStatus) + '</td><td class="tc mono">' + (r.overdueItems||0) + '</td></tr>';}).join('');
+  if (tbLogs) {
+    if (rows.length) {
+      tbLogs.innerHTML = rows.map(function(r, i) {
+        var photoCell = freshnessHtml(r.photoAgeDays);
+        return '<tr>' +
+          '<td class="n-idx">' + (i + 1) + '</td>' +
+          '<td><div class="pn">' + r.name + '</div>' + (r.address ? '<div class="pl">' + r.address + '</div>' : '') + '</td>' +
+          '<td class="tc">' + pillHtml(r.logStatus) + '</td>' +
+          '<td class="tc">' + photoCell + '</td>' +
+          '</tr>';
+      }).join('');
+    } else {
+      tbLogs.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:20px;color:#bbb;font-style:italic">No project data</td></tr>';
+    }
+  }
   var secLogs = document.getElementById('sec-logs');
-  if (secLogs) { secLogs.classList.add('vis'); var lb = document.getElementById('logs-bdg'); if(lb){ var nd = rows.filter(function(r){return r.logStatus!=='completed';}).length; lb.textContent = nd ? nd + ' incomplete' : ''; lb.style.display = nd ? '' : 'none'; } }
-  var tbSched = document.getElementById('tb-sched');
-  if (tbSched) { if (withSched.length) { tbSched.innerHTML = withSched.map(function(r,i){var ph=(r.phases||[]).slice(0,3).join(', ')||'\u2014';return '<tr><td class="n-idx">'+(i+1)+'</td><td><div class="pn">'+r.name+'</div></td><td class="mono" style="font-size:11px;color:#888">'+ph+'</td><td class="tc mono">'+(r.totalItems||0)+'</td><td class="tc mono" style="color:#dc2626;font-weight:700">'+(r.overdueItems||0)+'</td><td>'+sevHtml(r.overdueItems,r.totalItems)+'</td></tr>';}).join(''); } else { tbSched.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:#bbb;font-style:italic">No overdue items</td></tr>'; } }
-  var secSched = document.getElementById('sec-sched');
-  if (secSched) { secSched.classList.add('vis'); var sb=document.getElementById('sched-bdg'); if(sb){sb.textContent=withSched.length ? withSched.length+' flagged':'';sb.style.display=withSched.length?'':'none';} }
-  var tbNoSched = document.getElementById('tb-nosched');
-  var secNoSched = document.getElementById('sec-nosched');
-  if (tbNoSched && noSched.length) { tbNoSched.innerHTML = noSched.map(function(r){return '<tr><td><div class="pn">'+r.name+'</div></td><td class="mono" style="font-size:11px;color:#888">'+(r.address||'\u2014')+'</td><td>'+pillHtml(r.logStatus)+'</td></tr>';}).join(''); if(secNoSched)secNoSched.classList.add('vis'); var nb=document.getElementById('nosched-bdg'); if(nb)nb.textContent=noSched.length+' projects'; } else if(secNoSched) secNoSched.classList.remove('vis');
-  var cntAll=document.getElementById('cnt-all'); if(cntAll)cntAll.textContent=rows.length;
-  var cntActive=document.getElementById('cnt-active'); if(cntActive)cntActive.textContent=rows.filter(function(r){return r.logStatus==='completed'||r.logStatus==='draft'||r.logStatus==='in-progress';}).length;
-  var cntNosched=document.getElementById('cnt-nosched'); if(cntNosched)cntNosched.textContent=noSched.length;
-  var footer=document.getElementById('footer'); if(footer)footer.textContent='ONE70 Group \u2014 Siteam Compliance \u2014 '+reportDateFmt;
-  var emptyEl=document.getElementById('empty-state'); if(emptyEl)emptyEl.classList.remove('vis');
+  if (secLogs) {
+    secLogs.classList.add('vis');
+    var lb = document.getElementById('logs-bdg');
+    if (lb) {
+      var nd = rows.filter(function(r) { return r.logStatus !== 'completed'; }).length;
+      lb.textContent = nd ? nd + ' incomplete' : 'All complete';
+      lb.style.display = '';
+    }
+  }
+
+  // ── Filter bar counts ──
+  var cntAll = document.getElementById('cnt-all'); if (cntAll) cntAll.textContent = rows.length;
+  var cntActive = document.getElementById('cnt-active'); if (cntActive) cntActive.textContent = rows.filter(function(r) { return r.logStatus === 'completed' || r.logStatus === 'draft' || r.logStatus === 'in-progress'; }).length;
+  var cntStale = document.getElementById('cnt-stale'); if (cntStale) cntStale.textContent = rows.filter(function(r) { return r.photoAgeDays >= 30; }).length;
+  var cntNophoto = document.getElementById('cnt-nophoto30'); if (cntNophoto) cntNophoto.textContent = rows.filter(function(r) { return r.photoAgeDays >= 30; }).length;
+  var cntNeverlog = document.getElementById('cnt-neverlog'); if (cntNeverlog) cntNeverlog.textContent = rows.filter(function(r) { return r.logStatus === 'no-log'; }).length;
+  var cntNosched = document.getElementById('cnt-nosched'); if (cntNosched) cntNosched.textContent = rows.filter(function(r) { return !r.hasSchedule; }).length;
+
+  // ── Footer ──
+  var footer = document.getElementById('footer');
+  if (footer) footer.textContent = 'ONE70 Group — Siteam Compliance — ' + (data.reportDateFmt || '');
+
+  // ── Hide empty state ──
+  var emptyEl = document.getElementById('empty-state');
+  if (emptyEl) emptyEl.classList.remove('vis');
 }
 
-document.addEventListener('click',function(e){
-  var btn=e.target.closest('[data-f]'); if(!btn||!currentData) return;
-  currentFilter=btn.getAttribute('data-f');
-  document.querySelectorAll('[data-f]').forEach(function(b){b.classList.toggle('on',b===btn);});
-  var rows=currentData.rows||[];
-  var filtered=rows;
-  if(currentFilter==='active') filtered=rows.filter(function(r){return r.logStatus==='completed'||r.logStatus==='draft'||r.logStatus==='in-progress';});
-  else if(currentFilter==='nosched') filtered=rows.filter(function(r){return !r.hasSchedule;});
-  else if(currentFilter==='neverlog') filtered=rows.filter(function(r){return r.logStatus==='no-log';});
-  var tbLogs=document.getElementById('tb-logs');
-  if(tbLogs) Array.from(tbLogs.rows).forEach(function(tr,i){tr.classList.toggle('hide',filtered.indexOf(rows[i])<0);});
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('[data-f]');
+  if (!btn || !currentData) return;
+  currentFilter = btn.getAttribute('data-f');
+  document.querySelectorAll('[data-f]').forEach(function(b) { b.classList.toggle('on', b === btn); });
+  var rows = currentData.rows || [];
+  var filtered = rows;
+  if (currentFilter === 'active') filtered = rows.filter(function(r) { return r.logStatus === 'completed' || r.logStatus === 'draft' || r.logStatus === 'in-progress'; });
+  else if (currentFilter === 'nosched') filtered = rows.filter(function(r) { return !r.hasSchedule; });
+  else if (currentFilter === 'neverlog') filtered = rows.filter(function(r) { return r.logStatus === 'no-log'; });
+  else if (currentFilter === 'stale' || currentFilter === 'nophoto30') filtered = rows.filter(function(r) { return r.photoAgeDays >= 30; });
+  var tbLogs = document.getElementById('tb-logs');
+  if (tbLogs) Array.from(tbLogs.rows).forEach(function(tr, i) { tr.classList.toggle('hide', filtered.indexOf(rows[i]) < 0); });
 });
 
-(function(){
-  var dates=Object.keys(REPORT_DATA).sort().reverse();
-  if(dates.length===0){var e=document.getElementById('empty-state');if(e)e.classList.add('vis');return;}
-  var data=REPORT_DATA[dates[0]];
-  if(!data) return;
-  currentData=data;
-  render(data);
+(function() {
+  var dates = Object.keys(REPORT_DATA).sort().reverse();
+  if (!dates.length) { var e = document.getElementById('empty-state'); if (e) e.classList.add('vis'); return; }
+  currentData = REPORT_DATA[dates[0]];
+  render(currentData);
 })();
 </script>
 </body>
